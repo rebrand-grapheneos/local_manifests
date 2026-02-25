@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Rebrand Graphene OS Custom Manifest -->
+
+  <!-- Remote for Rebrand Graphene OS git2 repositories (SSH for private repos) -->
+  <remote name="rebrand-grapheneos" fetch="git@github.com:rebrand-grapheneos/" />
+
+  <remove-project name="platform_build" />
+  <project path="build/make" name="platform_build" remote="rebrand-grapheneos" revision="16"/>
+
+  <remove-project name="platform_frameworks_base" />
+  <project path="frameworks/base" name="platform_frameworks_base" remote="rebrand-grapheneos" revision="16"/>
+
+  <remove-project name="platform_packages_apps_SetupWizard2" />
+  <project path="packages/apps/SetupWizard2" name="platform_packages_apps_SetupWizard2" remote="rebrand-grapheneos" revision="16"/>
+
+  <remove-project name="script" />
+  <project path="script" name="script" remote="rebrand-grapheneos" revision="16"/>
+
+</manifest>
