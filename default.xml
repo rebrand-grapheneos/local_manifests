@@ -4,7 +4,7 @@
 
   <!-- Remote for Rebrand Graphene OS git2 repositories (SSH for private repos) -->
   <remote name="rebrand-grapheneos" fetch="git@github.com:rebrand-grapheneos/" />
-
+  
   <remove-project name="platform_build" />
   <project path="build/make" name="platform_build" remote="rebrand-grapheneos" revision="16"/>
 
