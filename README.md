@@ -110,12 +110,17 @@ This finds all projects with `.git2config` files and runs `git2 start`, which:
 1. Clones the original upstream repo based on `.git2config`
 2. Overlays the modified files from the git2 repository
 
-### Step 4: Set Up Build Environment
+### Step 4: Create Build System Symlinks
 
 ```bash
-# Create build system symlinks
 .repo/local_manifests/link-setup.sh
+```
 
+This creates symlinks required by the Android build system (`WORKSPACE`, `build/core`, `build/envsetup.sh`, etc.).
+
+### Step 5: Set Up Build Environment
+
+```bash
 # Copy signing keys (must be generated first - see Key Generation section)
 # Keys should be at keys/<DEVICE>/ relative to workspace root
 
@@ -133,7 +138,7 @@ export BUILD_NUMBER=$(date +%Y%m%d00)
 export OFFICIAL_BUILD=true
 ```
 
-### Step 5: Build
+### Step 6: Build
 
 ```bash
 # Build SDK tools (required first)
@@ -151,7 +156,7 @@ m -j16 vendorbootimage vendorkernelbootimage target-files-package
 m -j16 otatools-package
 ```
 
-### Step 6: Finalize and Sign
+### Step 7: Finalize and Sign
 
 ```bash
 # Stage build artifacts
@@ -161,7 +166,7 @@ script/finalize.sh
 script/generate-release.sh <DEVICE> $BUILD_NUMBER
 ```
 
-### Step 7: Deploy OTA
+### Step 8: Deploy OTA
 
 ```bash
 cd ota-server
@@ -761,6 +766,7 @@ cd test-build
 ./setup.sh
 repo sync -j$(nproc)
 .repo/local_manifests/git2-setup.sh
+.repo/local_manifests/link-setup.sh
 ```
 
 ## License
